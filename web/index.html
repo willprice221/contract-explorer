@@ -1,10 +1,11 @@
-<html>
-  <head>
-    <title>Contract explorer</title>
-  </head>
+{% extends "layouts/app.html" %}
+{% block title %}Contract explorer{% endblock %}
+{% block content %}
+  <form action="/contract" method="post">
+    <label for="address">Contract address</label>
+    <input id="address" type="text" name="address" placeholder="0x1234"/>
+    <button type="submit">Submit</button>
+  </form>
 
-  <body>
-    <p>Contract address:</p>
-    <small>Or just be lucky: <a href="/contract/1234">0x1234</a></small>
-  </body>
-</html>
+  <small>Or just click this example contract address: <a href="/contract/0x06012c8cf97bead5deae237070f9587f8e7a266d">0x06012c8cf97bead5deae237070f9587f8e7a266d</a></small>
+{% endblock %}

@@ -6,6 +6,7 @@ from function import FunctionPage
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/contract', ContractPage),
     ('/contract/(\w+)', ContractPage),
     ('/contract/(\w+)/(\w+)', FunctionPage),
 ], debug=True)

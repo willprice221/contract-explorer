@@ -6,6 +6,9 @@ handlers:
 - url: /
   script: app.app
 
+- url: /contract
+  script: app.app
+
 - url: /contract/.*
   script: app.app
 

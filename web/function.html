@@ -1,12 +1,8 @@
-<html>
-  <head>
-    <title>Contract explorer</title>
-  </head>
-
-  <body>
-    <h1>
-      <a href="/contract/{{ contract_id }}">{{ contract }}</a>
-      {{ function }}
-    </h1>
-  </body>
-</html>
+{% extends "layouts/app.html" %}
+{% block title %}{{ function_hash }} | Contract explorer{% endblock %}
+{% block content %}
+  <h1>
+    <a href="/contract/{{ contract_address }}">{{ contract }}</a>
+    {{ function_hash }}
+  </h1>
+{% endblock %}

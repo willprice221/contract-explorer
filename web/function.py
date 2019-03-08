@@ -6,6 +6,9 @@ from globals import Jinja
 
 class FunctionPage(webapp2.RequestHandler):
     def get(self, contract_address, function_hash):
+        # TODO: based on contract address and function hash, predict what are most similar to it.
+        # TODO: provide the function name (i.e. read it from BigTable?)
+
         template = Jinja().get_template('function.html')
         template_values = {
             'contract': contract_address,

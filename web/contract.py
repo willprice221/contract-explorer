@@ -14,10 +14,13 @@ class ContractPage(webapp2.RequestHandler):
         self.redirect('/contract/%s' % address)
 
     def get(self, contract_address):
+        # TODO: retrive from eveem BigTable to speed up
         contract_data = self.get_contract_data(contract_address)
         if contract_data is None:
             # todo: template w/ crying face
             return
+
+        # TODO: we have functions. Run prediction and show topmost 5-10 w/ highest probability
 
         template = Jinja().get_template('contract.html')
         template_values = {

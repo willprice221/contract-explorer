@@ -1,0 +1,34 @@
+body {
+  font-family: "Helvetica Neue";
+  font-size: 0.92rem;
+  color: #333;
+}
+
+a {
+  color: #069;
+}
+
+#header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+  color: #444;
+  padding: 0.5rem;
+}
+
+#header h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+#header a, #header a.hover, #header a.focus, #header a.active {
+  color: #444;
+  text-decoration: none;
+}
+
+#footer {
+  margin-top: 2rem;
+  border-top: 1px solid #ccc;
+  padding: 0.5rem;
+  color: #888;
+  text-align: center;
+}

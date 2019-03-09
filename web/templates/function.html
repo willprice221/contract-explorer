@@ -25,41 +25,90 @@
   </div>
 </header>
 
-<table class="table table-sm">
-  <thead>
-    <tr>
-      <th>&nbsp;</th>
-      <th>Function</th>
-      <th>Exact implementations in contracts</th>
-    </tr>
-  <thead>
+<div class="row">
+  <div class="col-6">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Function</th>
+          <th>Exact implementations in contracts</th>
+        </tr>
+      <thead>
 
-  <tbody>
-  {% for function in functions_exact %}
-    <tr>
-      <td>
-        <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-          {{ identicon_img(function, 48) }}
-        </a>
-      </td>
-      <td>
-        <div>
-          <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-            <code>{{ function.name }}</code>
-          </a>
-        </div>
+      <tbody>
+      {% for function in functions_exact %}
+        <tr>
+          <td>
+            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+              {{ identicon_img(function, 48) }}
+            </a>
+          </td>
+          <td>
+            <div>
+              <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+                <code>{{ function.name }}</code>
+              </a>
+            </div>
 
-        <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-          <small><code>{{ function.hash }}</code></small>
-        </a>
-      </td>
-      <td>
-        <a href="/contract/{{ function.addr }}">
-          <code>{{ function.addr }}</code>
-        </a>
-      </td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+              <small><code>{{ function.hash }}</code></small>
+            </a>
+          </td>
+          <td>
+            <a href="/contract/{{ function.addr }}">
+              <code>{{ function.addr }}</code>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-6">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Function</th>
+          <th>Probability</th>
+          <th>Contract</th>
+        </tr>
+      <thead>
+
+      <tbody>
+      {% for probability, function in functions_prediction %}
+        <tr>
+          <td>
+            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+              {{ identicon_img(function, 48) }}
+            </a>
+          </td>
+          <td>
+            <div>
+              <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+                <code>{{ function.name }}</code>
+              </a>
+            </div>
+
+            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+              <small><code>{{ function.hash }}</code></small>
+            </a>
+          </td>
+          <td>
+            <code>{{ probability }}</code>
+          </td>
+          <td>
+            <a href="/contract/{{ function.addr }}">
+              <code>{{ function.addr }}</code>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
 {% endblock %}

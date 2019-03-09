@@ -6,6 +6,16 @@ import pandas as pd
 
 client = bigquery.Client()
 
+def get_function(function_hash):
+    q = f"""
+        SELECT *
+        FROM `contract-explorer-233919.ethparis.functions11`
+        WHERE `hash`='{function_hash}'
+        """
+    query_job = client.query(q)
+    results = query_job.result()
+    return results.to_dataframe().to_dict('records')[0]
+
 def get_functions_in_contracts(tree_hash):
     q = f"""
         SELECT *
@@ -17,7 +27,7 @@ def get_functions_in_contracts(tree_hash):
     results = query_job.result()
     return results.to_dataframe().to_dict('records')
 
-def get_function(contract_address, function_hash):
+def get_contract_function(contract_address, function_hash):
     adrstr=eth_utils.to_checksum_address(contract_address)
     q = f"""
         SELECT *

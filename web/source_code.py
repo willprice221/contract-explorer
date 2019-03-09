@@ -1,3 +1,6 @@
+#
+# Copied from /etl
+#
 from google.cloud import bigquery
 import eth_utils
 import json

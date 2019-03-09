@@ -4,6 +4,7 @@ import logging
 
 from query import *
 from source_code import contract_function_code
+from predict import predict_model
 
 app = Flask('content-explorer')
 

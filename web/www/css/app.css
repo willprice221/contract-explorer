@@ -25,6 +25,18 @@ a {
   text-decoration: none;
 }
 
+#content h1 {
+  font-size: 1.75rem;
+}
+
+#content h2 {
+  font-size: 1.35rem;
+}
+
+#content h3 {
+  font-size: 1.15rem;
+}
+
 #footer {
   margin-top: 2rem;
   border-top: 1px solid #ccc;

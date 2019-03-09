@@ -1,7 +1,7 @@
 {% extends "layouts/app.html" %}
 {% block title %}{{ contract_address }} | Contract explorer{% endblock %}
 {% block content %}
-  <h1>{{ contract }}</h1>
+  <h1><code>{{ contract }}</code></h1>
 
   <p class="clearfix">Functions with the highest similarity with some other:</p>
 
@@ -9,7 +9,7 @@
   {% for function in functions %}
     <li>
       <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-        {{ function.name }}
+        <code>{{ function.name }}</code>
         <small><code>{{ function.hash }}</code></small>
       </a>
     </li>

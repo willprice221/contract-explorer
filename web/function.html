@@ -2,7 +2,8 @@
 {% block title %}{{ function_hash }} | Contract explorer{% endblock %}
 {% block content %}
   <h1>
-    <a href="/contract/{{ contract_address }}">{{ contract }}</a>
+    <a href="/contract/{{ contract_address }}"><code>{{ contract_address }}</code></a>
+    {{ function.name }}
     <code>{{ function_hash }}</code>
   </h1>
 

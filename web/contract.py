@@ -24,7 +24,6 @@ class ContractPage(webapp2.RequestHandler):
 
         template = Jinja().get_template('contract.html')
         template_values = {
-            'contract': contract_address,
             'contract_address': contract_address,
             'functions': contract_data['functions']
         }

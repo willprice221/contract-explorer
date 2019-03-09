@@ -1,0 +1,27 @@
+{% macro identicon_img(fn, size) %}
+<img src="{{ 'https://identicon-api.herokuapp.com/%s/%s?format=png' % (fn['tree_hash'], size) }}"/>
+{%- endmacro %}
+
+{% macro fn_identicon(fn) %}
+<a href="/contract/{{ fn.addr }}/{{ fn.hash }}">
+  {{ identicon_img(fn, 48) }}
+</a>
+{%- endmacro %}
+
+{% macro fn_info(fn) %}
+<div>
+  <a href="/contract/{{ fn.addr }}/{{ fn.hash }}">
+    <code>{{ fn.name }}</code>
+  </a>
+</div>
+
+<a href="/contract/{{ fn.addr }}/{{ fn.hash }}">
+  <small><code>{{ fn.hash }}</code></small>
+</a>
+{%- endmacro %}
+
+{% macro fn_contract(fn) %}
+<a href="/contract/{{ fn.addr }}">
+  <code>{{ fn.addr }}</code>
+</a>
+{% endmacro %}

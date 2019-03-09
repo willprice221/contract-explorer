@@ -45,6 +45,7 @@ def get_functions_w_count(contract_address):
           SELECT
             tree_hash,
             name,
+            addr,
             `hash`,
             found_count
           FROM  `contract-explorer-233919`.`ethparis`.`functions11`

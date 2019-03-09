@@ -1,4 +1,5 @@
 {% extends "layouts/app.html" %}
+{% from "macros.html" import identicon_img, fn_identicon, fn_info, fn_contract %}
 {% block title %}{{ function_hash }} | Contract explorer{% endblock %}
 {% block content %}
 
@@ -39,27 +40,9 @@
       <tbody>
       {% for function in functions_exact %}
         <tr>
-          <td>
-            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-              {{ identicon_img(function, 48) }}
-            </a>
-          </td>
-          <td>
-            <div>
-              <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-                <code>{{ function.name }}</code>
-              </a>
-            </div>
-
-            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-              <small><code>{{ function.hash }}</code></small>
-            </a>
-          </td>
-          <td>
-            <a href="/contract/{{ function.addr }}">
-              <code>{{ function.addr }}</code>
-            </a>
-          </td>
+          <td>{{ fn_identicon(function) }}</td>
+          <td>{{ fn_info(function) }}</td>
+          <td>{{ fn_contract(function )}}</td>
         </tr>
       {% endfor %}
       </tbody>
@@ -80,30 +63,12 @@
       <tbody>
       {% for probability, function in functions_prediction %}
         <tr>
-          <td>
-            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-              {{ identicon_img(function, 48) }}
-            </a>
-          </td>
-          <td>
-            <div>
-              <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-                <code>{{ function.name }}</code>
-              </a>
-            </div>
-
-            <a href="/contract/{{ function.addr }}/{{ function.hash }}">
-              <small><code>{{ function.hash }}</code></small>
-            </a>
-          </td>
+          <td>{{ fn_identicon(function) }}</td>
+          <td>{{ fn_info(function) }}</td>
           <td>
             <code>{{ '%.2f' % probability }}</code>
           </td>
-          <td>
-            <a href="/contract/{{ function.addr }}">
-              <code>{{ function.addr }}</code>
-            </a>
-          </td>
+          <td>{{ fn_contract(function )}}</td>
         </tr>
       {% endfor %}
       </tbody>

@@ -1,15 +1,11 @@
 {% extends "layouts/app.html" %}
+{% from "macros.html" import identicon_img, fn_identicon, fn_info %}
 {% block title %}{{ contract_address }} | Contract explorer{% endblock %}
 {% block content %}
 
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-      <a href="/contract/{{ contract_address }}">
-      Contract <code>{{ contract_address }}</code>
-    </a>
-  </li>
   <li class="breadcrumb-item active">
-    Functions
+    Contract <code>{{ contract_address }}</code>
   </li>
 </ol>
 
@@ -28,31 +24,12 @@
   <tbody>
   {% for function in functions %}
     <tr>
-      <td>
-        <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-          {{ identicon_img(function, 48) }}
-        </a>
-      </td>
-      <td>
-        <div>
-          <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-            <code>{{ function.name }}</code>
-          </a>
-        </div>
-
-        <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-          <small><code>{{ function.hash }}</code></small>
-        </a>
-      </td>
-
-      <td>
-        {{ function.found_count }}
-      </td>
-
+      <td>{{ fn_identicon(function) }}</td>
+      <td>{{ fn_info(function) }}</td>
+      <td>{{ function.found_count }}</td>
       <td>
         {{ function.variants_count }}
       </td>
-
     </tr>
   {% endfor %}
   </tbody>

@@ -1,4 +1,9 @@
+eth-hash
+eth-utils
+Flask
+google-auth
 google-cloud-bigquery
 gunicorn
-Flask
+pandas
+pycryptodome
 requests

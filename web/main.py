@@ -1,10 +1,9 @@
 from flask import Flask, abort, redirect, render_template, request
-from google.cloud import bigquery
 import json
 import logging
 
-from loading import load_contract_data
 from loading import find_function_in_contract
+from query import get_functions
 
 app = Flask('content-explorer')
 
@@ -19,11 +18,11 @@ def submitContract():
 
 @app.route('/contract/<contract_address>')
 def showContract(contract_address):
-    contract_data = load_contract_data(contract_address)
+    contract_functions = get_functions(contract_address)
     return render_template(
         'contract.html',
         contract_address = contract_address,
-        functions = contract_data['functions'])
+        functions = contract_functions)
 
 @app.route('/contract/<contract_address>/<function_hash>')
 def showFunction(contract_address, function_hash):

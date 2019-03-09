@@ -1,17 +1,20 @@
 {% extends "layouts/app.html" %}
 {% block title %}{{ contract_address }} | Contract explorer{% endblock %}
 {% block content %}
-  <h1><code>{{ contract }}</code></h1>
+<h1>Contract <code>{{ contract_address }}</code> functions</h1>
 
-  <p>Functions with the highest similarity with some other:</p>
+<h3>Exact matches in other contracts</h3>
 
-  <table class="table table-sm">
+<table class="table table-sm">
+  <thead>
     <tr>
       <th>&nbsp;</th>
       <th>Function</th>
-      <th>Contract</th>
+      <th>Found in contracts</th>
     </tr>
+  <thead>
 
+  <tbody>
   {% for function in functions %}
     <tr>
       <td>
@@ -20,17 +23,25 @@
         </a>
       </td>
       <td>
+        <div>
+          <a href="/contract/{{ contract_address }}/{{ function.hash }}">
+            <code>{{ function.name }}</code>
+          </a>
+        </div>
+
         <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-          <code>{{ function.name }}</code>
           <small><code>{{ function.hash }}</code></small>
         </a>
       </td>
       <td>
-        <a href="/contract/{{ function.contract_address }}">
-          <code>{{ contract_address }}</code>
-        </a>
+        {{ function.found_count }}
       </td>
     </tr>
   {% endfor %}
-  </table>
+  </tbody>
+</table>
 {% endblock %}
+
+<p>Functions with the highest similarity with some other:</p>
+
+<strong>TODO</strong>

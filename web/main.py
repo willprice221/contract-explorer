@@ -3,7 +3,7 @@ import json
 import logging
 
 from loading import find_function_in_contract
-from query import get_functions
+from query import get_functions_w_count
 
 app = Flask('content-explorer')
 
@@ -18,7 +18,7 @@ def submitContract():
 
 @app.route('/contract/<contract_address>')
 def showContract(contract_address):
-    contract_functions = get_functions(contract_address)
+    contract_functions = get_functions_w_count(contract_address)
     return render_template(
         'contract.html',
         contract_address = contract_address,

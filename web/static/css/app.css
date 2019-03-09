@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+#content h1, #content h2 {
+  margin-bottom: 1.5rem;
+}
+
 #content h1 {
   font-size: 1.75rem;
 }

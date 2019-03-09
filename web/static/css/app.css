@@ -9,10 +9,10 @@ a {
 }
 
 #header {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #ccc;
+  background-color: wheat;
+  margin-bottom: 1.5rem;
   color: #444;
-  padding: 0.5rem;
+  padding: 0.65rem 1rem;
 }
 
 #header h2 {

@@ -1,6 +1,6 @@
 {% extends "layouts/app.html" %}
 {% from "macros.html" import identicon_img, fn_identicon, fn_info %}
-{% block title %}{{ contract_address }} | Contract explorer{% endblock %}
+{% block title %}{{ contract_address }} | Contract Genius{% endblock %}
 {% block content %}
 
 <ol class="breadcrumb">
@@ -27,15 +27,9 @@
       <td>{{ fn_identicon(function) }}</td>
       <td>{{ fn_info(function) }}</td>
       <td>{{ function.found_count }}</td>
-      <td>
-        {{ function.variants_count }}
-      </td>
+      <td>{{ function.variants_count }}</td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
 {% endblock %}
-
-<p>Functions with the highest similarity with some other:</p>
-
-<strong>TODO</strong>

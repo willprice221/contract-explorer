@@ -9,9 +9,9 @@ a {
 }
 
 #header {
-  background-color: wheat;
+  background-color: blueviolet;
   margin-bottom: 1.5rem;
-  color: #444;
+  color: #fff;
   padding: 0.65rem 1rem;
 }
 
@@ -21,7 +21,7 @@ a {
 }
 
 #header a, #header a.hover, #header a.focus, #header a.active {
-  color: #444;
+  color: #fff;
   text-decoration: none;
 }
 

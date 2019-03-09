@@ -2,6 +2,7 @@ from flask import Flask, abort, redirect, render_template, request
 import json
 import logging
 
+from functions import *
 from query import *
 from source_code import contract_function_code
 from predict import predict_model

@@ -94,8 +94,8 @@ class ToArray:
     def fit_transform(self, X, y=0):
         return X.toarray()
     
-    def transform(self):
-        return None
+    def transform(self, X):
+        return X.toarray()
     
 def load_from_bigquery(table, limit=''):
     sql = '''

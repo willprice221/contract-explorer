@@ -63,6 +63,7 @@ def preprocess(tree):
     flat = flatten(paths)
     return ' '.join(flat)
 
+credentials = service_account.Credentials.from_service_account_file('/home/ankit//service.json',)
 # data query
 from google.cloud import bigquery
 client = bigquery.Client()
@@ -87,9 +88,13 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+import time
 
+start = time.time()
 vectorizer = TfidfVectorizer(ngram_range=(1,2))
 X = vectorizer.fit_transform(features)
 X_train, X_test, y_train, y_test = train_test_split(X, target, test_size=0.33)
-rf = RandomForestClassifier(n_estimators=50, n_jobs=).fit(X_train,y_train)
+rf = RandomForestClassifier(n_estimators=50, n_jobs=60).fit(X_train,y_train)
 print(rf.score(X_test, y_test))
+end = time.time()
+print('time {}s'.format(end-start))

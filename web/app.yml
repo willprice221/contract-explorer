@@ -4,8 +4,13 @@ threadsafe: true
 
 handlers:
 - url: /
-  static_files: www/index.html
-  upload: www/index.html
+  script: app.app
+
+- url: /contract
+  script: app.app
+
+- url: /contract/.*
+  script: app.app
 
 - url: /(.*)
   static_files: www/\1

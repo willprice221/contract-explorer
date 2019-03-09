@@ -1,0 +1,16 @@
+{% extends "layouts/app.html" %}
+{% block title %}{{ function_hash }} | Contract explorer{% endblock %}
+{% block content %}
+  <h1>
+    <a href="/contract/{{ contract_address }}">{{ contract }}</a>
+    <code>{{ function_hash }}</code>
+  </h1>
+
+  <p class="clearfix">Similar functions:</p>
+
+  <ul class="list-unstyled clearfix">
+    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
+    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
+    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
+  </ul>
+{% endblock %}

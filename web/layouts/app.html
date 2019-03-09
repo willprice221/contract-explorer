@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="/css/app.css">
+  </head>
+
+  <body>
+    <div id="header">
+      <h2><a href="/">Contract explorer</a></h2>
+    </div>
+
+    <div class="container" id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <div id="footer">
+      Built during <a href="https://ethparis.com/">ETHParis</a> hackathon.
+
+      <a href="https://github.com/willprice221/contract-explorer">Github</a>
+    </div>
+  </body>
+</html>

@@ -1,3 +1,5 @@
 pandas
 seaborn
 sklearn
+jupyter
+pandas-gbq

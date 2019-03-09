@@ -15,14 +15,20 @@ Install App Engine for Python:
 gcloud components install app-engine-python
 ```
 
+Install Python dependencies:
+
+```
+sudo -H pip install -r requirements.txt
+```
+
 ## Run locally
 
 ```
-dev_appserver.py app.yml
+python main.py
 ```
 
 ## Deployment
 
 ```
-gcloud app deploy app.yml
+gcloud app deploy
 ```

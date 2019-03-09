@@ -77,11 +77,10 @@ class Preprocess:
     def __init__(self):
         pass
     
-    def fit_transform(self, trees, y=0):
+    def fit_transform(self, tree, y=0):
         self.features = []
-        for t in trees:
-            feats = preprocess(t)
-            self.features.append(feats)
+        feats = preprocess(tree)
+        self.features.append(feats)
         return self.features
     
     def transform(self):

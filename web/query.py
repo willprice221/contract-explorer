@@ -41,22 +41,32 @@ def get_contract_function(contract_address, function_hash):
 def get_functions_w_count(contract_address):
     adrstr=eth_utils.to_checksum_address(contract_address)
     q = f"""
-        SELECT
-          tree_hash,
-          name,
-          `hash`,
-          found_count
-        FROM  `contract-explorer-233919`.`ethparis`.`functions11`
-        JOIN (
+        SELECT * FROM (
+          SELECT
+            tree_hash,
+            name,
+            `hash`,
+            found_count
+          FROM  `contract-explorer-233919`.`ethparis`.`functions11`
+          JOIN (
 
-        SELECT
-          tree_hash,
-          count(DISTINCT addr) found_count
-        FROM  `contract-explorer-233919`.`ethparis`.`functions11`
-        GROUP BY tree_hash
+          SELECT
+            tree_hash,
+            count(DISTINCT addr) found_count
+          FROM  `contract-explorer-233919`.`ethparis`.`functions11`
+          GROUP BY tree_hash
 
-        ) USING (tree_hash)
-        WHERE addr='{adrstr}'
+          ) USING (tree_hash)
+          WHERE addr='{adrstr}'
+
+        ) JOIN (
+          SELECT
+            `hash`,
+            count(DISTINCT tree_hash) variants_count,
+            count(DISTINCT addr) smart_contracts
+          FROM  `contract-explorer-233919`.`ethparis`.`functions11`
+          GROUP BY `hash`
+        ) USING (`hash`)
         ORDER BY found_count DESC
         """
     query_job = client.query(q)

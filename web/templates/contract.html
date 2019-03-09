@@ -18,7 +18,10 @@
     <tr>
       <th>&nbsp;</th>
       <th>Function</th>
-      <th>Contracts with Exact Implementation</th>
+
+      <th>Contracts with the Same Implementation</th>
+      <th>Various Implementations</th>
+
     </tr>
   <thead>
 
@@ -41,9 +44,15 @@
           <small><code>{{ function.hash }}</code></small>
         </a>
       </td>
+
       <td>
         {{ function.found_count }}
       </td>
+
+      <td>
+        {{ function.variants_count }}
+      </td>
+
     </tr>
   {% endfor %}
   </tbody>

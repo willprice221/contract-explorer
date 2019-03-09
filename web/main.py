@@ -33,7 +33,7 @@ def showFunction(contract_address, function_hash):
     functions_exact = get_functions_in_contracts(function['tree_hash'])
     function_sources = contract_function_code(contract_address, function_hash)
 
-    top_probs, top_fhashes = predict_model(json.loads(function['tree']))
+    top_probs, top_fhashes = predict_model(function['tree'])
     top_funcs = [get_function(h) for h in top_fhashes]
     functions_prediction = sorted(zip(top_probs, top_funcs), key=itemgetter(0), reverse=True)
 

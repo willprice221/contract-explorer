@@ -5,5 +5,8 @@ google-auth
 google-cloud-bigquery
 gunicorn
 pandas
+pandas-gbq
 pycryptodome
 requests
+seaborn
+sklearn

@@ -1,12 +1,15 @@
 from copy import copy
 import numpy as np
 import pandas as pd
+from google.cloud import bigquery
+client = bigquery.Client()
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 import pickle
+import json
 
 terminal = []
 class Node:
@@ -43,12 +46,12 @@ class Node:
 
             path_so_far = copy(path_so_far)
             path_so_far.append(node.name)
-
+                
             if len(node.children) == 0:
                 result = [path_so_far]
             else:
                 result = []
-
+            
             for c in node.children:
                 if c is not ignore:
                     result.extend(dfs(c, path_so_far, node))
@@ -57,40 +60,46 @@ class Node:
 
         psf = []
         return dfs(self, psf, None)
-
+    
 
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 def preprocess(tree):
+    tree = json.loads(tree)
     paths = Node(tree).downward_paths()
     flat = flatten(paths)
-    return ' '.join(flat)
+    result =  ' '.join(flat)
+    return result.replace('list', '')
 
 
 class Preprocess:
-
+    
     def __init__(self):
         pass
-
+    
     def fit_transform(self, trees, y=0):
         self.features = []
         for t in trees:
             feats = preprocess(t)
             self.features.append(feats)
         return self.features
-
+    
     def transform(self):
         return self.features
 
 
 
 class ToArray:
-
+    
     def __init__(self):
         pass
-
+    
     def fit_transform(self, X, y=0):
         return X.toarray()
-
+    
     def transform(self, X):
         return X.toarray()
+    
+    def fit(self, X, y=0):
+        return X.toarray()
+    

@@ -3,16 +3,34 @@
 {% block content %}
   <h1><code>{{ contract }}</code></h1>
 
-  <p class="clearfix">Functions with the highest similarity with some other:</p>
+  <p>Functions with the highest similarity with some other:</p>
 
-  <ul class="list-unstyled clearfix">
+  <table class="table table-sm">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Function</th>
+      <th>Contract</th>
+    </tr>
+
   {% for function in functions %}
-    <li>
-      <a href="/contract/{{ contract_address }}/{{ function.hash }}">
-        <code>{{ function.name }}</code>
-        <small><code>{{ function.hash }}</code></small>
-      </a>
-    </li>
+    <tr>
+      <td>
+        <a href="/contract/{{ contract_address }}/{{ function.hash }}">
+          {{ identicon_img(function, 48) }}
+        </a>
+      </td>
+      <td>
+        <a href="/contract/{{ contract_address }}/{{ function.hash }}">
+          <code>{{ function.name }}</code>
+          <small><code>{{ function.hash }}</code></small>
+        </a>
+      </td>
+      <td>
+        <a href="/contract/{{ function.contract_address }}">
+          <code>{{ contract_address }}</code>
+        </a>
+      </td>
+    </tr>
   {% endfor %}
-  </ul>
+  </table>
 {% endblock %}

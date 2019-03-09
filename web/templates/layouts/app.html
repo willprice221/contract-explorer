@@ -1,3 +1,6 @@
+{% macro identicon_img(fn, size) %}
+<img src="{{ 'https://identicon-api.herokuapp.com/%s/%s?format=png' % (fn['tree_hash'], size) }}"/>
+{%- endmacro %}
 <!DOCTYPE html>
 <html lang="en">
   <head>

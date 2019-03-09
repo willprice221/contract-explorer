@@ -23,3 +23,7 @@ python main.py
 ```
 gcloud app deploy
 ```
+
+# Credits
+
+* [Jdenticon](https://github.com/dmester/jdenticon) for function identicons.

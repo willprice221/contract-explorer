@@ -1,3 +1,4 @@
 .idea
 *~
 *.pyc
+eth2vec/venv/*

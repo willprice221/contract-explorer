@@ -9,7 +9,7 @@ client = bigquery.Client()
 def get_functions_in_contracts(tree_hash):
     q = f"""
         SELECT *
-        FROM `contract-explorer-233919.ethparis.functions4`
+        FROM `contract-explorer-233919.ethparis.functions11`
         WHERE tree_hash='{tree_hash}'
         LIMIT 100
         """
@@ -21,7 +21,7 @@ def get_function(contract_address, function_hash):
     adrstr=eth_utils.to_checksum_address(contract_address)
     q = f"""
         SELECT *
-        FROM `contract-explorer-233919.ethparis.functions4`
+        FROM `contract-explorer-233919.ethparis.functions11`
         WHERE addr='{adrstr}' AND `hash`='{function_hash}'
         """
     query_job = client.query(q)
@@ -32,13 +32,21 @@ def get_functions_w_count(contract_address):
     adrstr=eth_utils.to_checksum_address(contract_address)
     q = f"""
         SELECT
-            tree_hash,
-            name,
-            `hash`,
-            count(DISTINCT addr) found_count
-        FROM `contract-explorer-233919.ethparis.functions4`
-        WHERE tree_hash IN (SELECT tree_hash FROM `contract-explorer-233919.ethparis.functions4` WHERE addr='{adrstr}')
-        GROUP BY tree_hash, name, `hash`
+          tree_hash,
+          name,
+          `hash`,
+          found_count
+        FROM  `contract-explorer-233919`.`ethparis`.`functions11`
+        JOIN (
+
+        SELECT
+          tree_hash,
+          count(DISTINCT addr) found_count
+        FROM  `contract-explorer-233919`.`ethparis`.`functions11`
+        GROUP BY tree_hash
+
+        ) USING (tree_hash)
+        WHERE addr='{adrstr}'
         ORDER BY found_count DESC
         """
     query_job = client.query(q)

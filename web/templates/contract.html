@@ -1,7 +1,17 @@
 {% extends "layouts/app.html" %}
 {% block title %}{{ contract_address }} | Contract explorer{% endblock %}
 {% block content %}
-<h1>Contract <code>{{ contract_address }}</code> functions</h1>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+      <a href="/contract/{{ contract_address }}">
+      Contract <code>{{ contract_address }}</code>
+    </a>
+  </li>
+  <li class="breadcrumb-item active">
+    Functions
+  </li>
+</ol>
 
 <h3>Exact matches in other contracts</h3>
 

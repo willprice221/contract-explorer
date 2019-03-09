@@ -1,17 +1,63 @@
 {% extends "layouts/app.html" %}
 {% block title %}{{ function_hash }} | Contract explorer{% endblock %}
 {% block content %}
-  <h1>
-    <a href="/contract/{{ contract_address }}"><code>{{ contract_address }}</code></a>
-    {{ function.name }}
-    <code>{{ function_hash }}</code>
-  </h1>
 
-  <p class="clearfix">Similar functions:</p>
+<header>
+  <div class="media">
+    {{ identicon_img(function, 128) }}
+    <div class="media-body">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/contract/{{ contract_address }}">
+            Contract <code>{{ contract_address }}</code>
+          </a>
+        </li>
+        <li class="breadcrumb-item ative">
+          {{ function.name }}
+          <code><small>{{ function_hash }}</small></code>
+        </li>
+      </ol>
+    </div>
+  </div>
+</header>
 
-  <ul class="list-unstyled clearfix">
-    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
-    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
-    <li><em>Function</em> in <em>contract</em> <tt>0.97</tt></li>
-  </ul>
+<h3>Exact matches in contracts</h3>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Function</th>
+      <th>Contract</th>
+    </tr>
+  <thead>
+
+  <tbody>
+  {% for function in functions_exact %}
+    <tr>
+      <td>
+        <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+          {{ identicon_img(function, 48) }}
+        </a>
+      </td>
+      <td>
+        <div>
+          <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+            <code>{{ function.name }}</code>
+          </a>
+        </div>
+
+        <a href="/contract/{{ function.addr }}/{{ function.hash }}">
+          <small><code>{{ function.hash }}</code></small>
+        </a>
+      </td>
+      <td>
+        <a href="/contract/{{ function.addr }}">
+          <code>{{ function.addr }}</code>
+        </a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

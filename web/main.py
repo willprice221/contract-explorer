@@ -3,6 +3,7 @@ import json
 import logging
 
 from query import *
+from source_code import contract_function_code
 
 app = Flask('content-explorer')
 
@@ -27,12 +28,14 @@ def showContract(contract_address):
 def showFunction(contract_address, function_hash):
     function = get_function(contract_address, function_hash)
     functions_exact = get_functions_in_contracts(function['tree_hash'])
+    function_sources = contract_function_code(contract_address, function_hash)
     return render_template(
         'function.html',
         contract_address = contract_address,
         function_hash = function_hash,
         function = function,
-        functions_exact = functions_exact)
+        functions_exact = functions_exact,
+        function_sources = function_sources)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 import pickle
+import json
 
 terminal = []
 class Node:
@@ -64,9 +65,11 @@ class Node:
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 def preprocess(tree):
+    tree = json.loads(tree)
     paths = Node(tree).downward_paths()
     flat = flatten(paths)
-    return ' '.join(flat)
+    result =  ' '.join(flat)
+    return result.replace('list', '')
 
 
 class Preprocess:
@@ -95,6 +98,9 @@ class ToArray:
         return X.toarray()
     
     def transform(self, X):
+        return X.toarray()
+    
+    def fit(self, X, y=0):
         return X.toarray()
     
 def load_from_bigquery(table, limit=''):

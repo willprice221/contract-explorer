@@ -1,6 +1,10 @@
 # contract-explorer
 ETHParis hackathon project
 
+# [Link to Hackathon Submission](https://devpost.com/software/contract-genius)
+# [Link to Contract Explorer](http://bit.ly/contract-genius)
+
+
 # Web UI
 
 In `web` folder:
@@ -26,4 +30,13 @@ gcloud app deploy
 
 # Credits
 
+* [Eveem](https://eveem.org) for decompiled smart contract code
+
 * [Jdenticon](https://github.com/dmester/jdenticon) for function identicons.
+
+# The Authors
+
+* [Will Price](https://twitter.com/willprice221)
+* [Aleksey Studnev](https://bloxy.info/)
+* [Ankit Chiplunkar](https://twitter.com/ankitchiplunkar)
+* [Alexander Asarov](https://github.com/alaz)

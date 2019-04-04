@@ -8,7 +8,7 @@ from query import *
 from source_code import contract_function_code
 from predict import predict_model
 
-app = Flask('content-explorer')
+app = Flask('content-explorer', static_folder='static', static_url_path='')
 
 @app.route('/')
 def index():
